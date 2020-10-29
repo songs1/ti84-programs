@@ -1,0 +1,37 @@
+Ancient Egyptian Multiplication Algorithm
+
+versionKey-02
+
+https://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
+
+prgmEGYMULTP
+:Input "_FACTOR_A:_", A
+:Input "_FACTOR_B:_", B
+:ClrHome
+
+:Output (1, 4, A)
+:Output (1, 8, "*")
+:Output (1, 12, B)
+:Output (1, 17, "=")
+
+:{0,0,0, 0,0,0, 0,0,0} --> listBIN
+:For (J, 1, 9, 1)
+:While A>= 2^(9-J)
+:A-2^(9-J) --> A
+:listBIN(J) +1 --> listBIN(J)
+:End
+:End
+
+:0 --> T
+:For (K, 9, 1, -1)
+:Output(11-K, 4, 2^(9-K))
+:Output(11-K, 12, B*2^(9-K))
+
+:If listBIN(K) =1
+:Then
+:Output (11-K, 2, "+")
+:Output (11-K, 10, "+")
+:T+ B*2^(9-K) --> T
+:End
+:End
+:T
