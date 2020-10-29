@@ -1,0 +1,84 @@
+pg_34.02
+
+Programs for GT Multivar Calc 2551
+versionKey-02
+
+prgmGT2551
+:Radian
+:Menu("_PROGS: GT-MATH 2551, V1",
+	"_CROSS PROD (TRI. AREA)", A,
+	"_POLAR INTEG (AREA R)", C,
+	"_2ND DERIV. TEST", B,
+	"_CONSERVATIVE F TEST", D)
+
+
+:Lbl D
+:Disp "_**_CONSERVATIVE TEST FOR"
+:Disp "_FIELD F = (M,N,P)_**" :Disp ""
+:Input "_M_=_", Str1 :Str1 --> Y1
+:Input "_N_=_", Str2 :Str2 --> Y2
+:Input "_P_=_", Str3 :Str3 --> Y3
+:pi --> X :e --> Y :sqrt(2) --> Z
+:nDeriv( Y3, Y, e) --> A
+:nDeriv( Y2, Z, sqrt(2)) --> B
+:nDeriv( Y3, X, pi) --> D
+:nDeriv( Y1, Z, sqrt(2)) --> E
+:nDeriv( Y2, X, pi) --> I
+:nDeriv( Y1, Y, e) --> J
+:If Y3 =/= 0
+:Then :abs(A-B)/A --> C
+:abs(D-E)/D --> F :End
+:abs(I-J)/I --> K
+:If (C+F+K) < .0001
+:Then :Disp "_F IS CONSERVATIVE"
+:Else :Disp "_F IS NOT CONSERV." :End
+:Stop
+
+
+:Lbl C
+:Disp "prgmPOLAREA" :Disp""
+:Input "_Th_LO-BOUND:_", A
+:Input "_Th_HI-BOUND:_", B
+:Input "_R_LO-BOUND:_", Str1 :"(" +Str1 +")^2" --> Y1
+:Input "_R_HI-BOUND:_", Str2 :"(" +Str2 +")^2" --> Y2
+:.5*fnInt( Y2 - Y1, Th, A, B)
+:Stop
+
+
+:Lbl B
+:Disp "*_2ND DERIV TEST, F(X,Y)_* :Disp""
+:Input "_TEST POINT:_", L1
+:Input "_PARTIAL F.X_=_", Str1: Str1 --> Y1
+:Input "_________F.Y_=_", Str2: Str2 --> Y2
+:L1(1)-->X: L2(2) --> Y
+:nDeriv(Y1, X, L1(1)) --> A
+:nDeriv(Y1, Y, L1(2)) --> B
+:nDeriv(Y2, Y, L1(2)) --> D
+:AD - B^2 --> H
+:If H > 0: Then
+:If A > 0: "_LOCAL MIN" --> Str3
+:If A < 0: "_LOCAL MAX" --> Str3 :End
+:If H < 0: "_SADDLE POINT" --> Str3
+:If H = 0: "_<INCONCLUSIVE>" --> Str3 :Disp""
+"Disp "_HESSIAN (DET)_=", H
+:Disp L1 :Disp Str3
+:Stop
+
+
+:Lbl A
+:Disp "prgmAREA2551" :Disp""
+:Input "_POINT P:_", L1
+:Input "_______Q:_", L2
+:Input "_______R:_", L3
+:For (I,1,3,1)
+:L2(I) - L1(I) --> L4(I)	# {L4 = vector PQ}
+:L3(I) - L1(I) --> L5(I)	# {L5 = vector PR}
+:End
+:L4(2)L5(3) - L5(2)L4(3) --> A
+:-L4(1)L5(3) + L5(1)L4(3) --> B
+:L4(1)L5(2) - L5(1)L4(2) --> C
+:A^2 + B^2 + C^2 --> D		# {det(ijk, PQ, PR)}
+:Disp ""
+:Disp "_NORMAL VECT: PQ X PR = ", {A,B,C}
+:Disp "_PARALLELOGRAM AREA:", SQRT(D)
+:Disp "_TRIANGLE AREA:", .5*SQRT(D)
