@@ -1,0 +1,20 @@
+AP Physics 1: UNIFORM CIRCULAR MOTION, versionKey-01
+
+prgmUNICIRMO
+:Degree
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_MASS:_", M	//Only need Mass to find Tension
+:Input "_RADIUS:_", R
+:Input "_VELOC:_", V
+
+:arctan(RG/V^2) --> Th
+:MG/sin(Th) --> T
+:2piR/V --> P
+:R/cos(Th) --> L
+
+:ClrHome
+:Disp "_ROPE_LENGTH:", L
+:Disp "_ <6 blanks> _TENSION:", T
+:Disp "_ANGLE FROM HORIZ:", Th
+:Disp "_ROTATION PERIOD (TP):", P
