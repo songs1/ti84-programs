@@ -1,0 +1,27 @@
+Banked Turns without slipping, AP Physics 1
+versionKey-01
+
+prgmBANKTURN
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_TURN RADIUS:_", R
+:Input "_INCLINE ANGL$:_", Th		# {$ = deg symbol}
+:Input "_MU.S_=_", M
+
+:Disp ""
+:ROOT (RGtan(Th)) --> B
+:ROOT (RG(sin(Th) + Mcos(Th)) / (cos(Th) - Msin(Th))) --> X
+
+:sin(Th) - Mcos(Th) --> C
+:If C < 0
+:Then
+:Disp "_MIN SPEED W/O SLIP: NONE"
+:Else
+:ROOT (C / (cos(Th) + Msin(Th))) --> I
+:Disp "_MIN SPEED W/O SLIP:", I
+:End
+
+:Disp "_MAX SPEED:", X
+:Disp "_RATED (BALANCING) SPEED:", B
+:Disp ""
+:Disp "(ALL INDEP OF MASS)"
