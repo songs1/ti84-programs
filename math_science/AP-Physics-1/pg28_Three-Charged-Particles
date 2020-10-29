@@ -1,0 +1,21 @@
+AP Physics 1: Three Charged particles problem; versionKey-02
+
+prgmELECPULL
+:Disp "**ELEC FORCE ON PTCL A**"
+:Disp "_(NEG Q = ATTRACTIVE)"
+:Disp""
+:Input "__Q.A_=_", A
+:Input "__Q.B_=_", B
+:Input "__Q.C_=_", C
+:Input "_DX.B_=_", D
+:Input "_DX.C_=_", E
+:Input "_COULOMB CONST (9E9):_", K
+
+:KAB/D^2 --> G
+:KAC/E^2 --> H
+:G+H --> F
+
+:Disp ""
+:Disp "_F.B_=", G
+:Disp "_F.C_=", H
+:Disp "_F.NET_=", F 
