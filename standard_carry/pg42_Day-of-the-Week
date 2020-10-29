@@ -1,0 +1,32 @@
+pg_42.00: Day of the Week Calculator
+
+prgmDAYOWEEK
+:ClrHome
+:Disp "CALCULATE DAY OF THE WEEK"
+:Input "__YEAR:__", Y
+:Input "__MONTH:_", M
+:Input "__DAY:___", D
+
+:rem(int((Y-1)/100), 4) -> C
+:8-2C -> W
+:If rem(Y, 400)=0 and M>2
+:W+1 -> W
+
+:rem(Y,100) -> Y
+:For(I,4,Y+(M>2)+21(Y=0)-1, 4)
+:W+1 -> W
+:End
+
+:{0,3,3,6,1,4,6,2,5,0,3,5} -> L1
+:rem(W+Y+L1(M)+D-2, 7) -> W
+
+:If W=0: "SUN" -> Str1
+:If W=1: "MON" -> Str1
+:If W=2: "TUES" -> Str1
+:If W=3: "WEDNES" -> Str1
+:If W=4: "THURS" -> Str1
+:If W=5: "FRI" -> Str1
+:If W=6: "SATUR" -> Str1
+
+:Disp ""
+:Disp "__" + Str1 + "DAY"
