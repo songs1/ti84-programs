@@ -24,15 +24,15 @@ pg#  	Program				Name			Category
 22	Tension of 2 Cables		prgmTWOCABLE		Physics (21)
 23	Double Modified Atwood		prgmATWOOD		Physics (21)
 24	Uniform Circular Motion		prgmUNICIRMO		Physics (21)
-25	Kepler’s Third Law		prgmKEPLER3		Physics (21)
+25	Kepler’s Third Law		prgmKEPLER3		Physics (21), Incomplete
 26	Pendulum Max Speed		prgmPENDULM1		Physics (21)
 27	Banked Turn Without Slip	prgmBANKTURN		Physics (21)
 28	Electric Force of 3 Particles	prgmELECPULL		Physics (21)
 29	Complex Circuits		prgmCIRCUIT		Physics (21)
 30	Doppler Effect			prgmDOPPLER		Physics (21)
-31	REF: Kinematic Eqs		--			Physics (21) REF
-32	REF: Simple Harmonic Motion	--			Physics (21) REF
-33	REF: Circuits			--			Physics (21) REF
+31	REF: Kinematic Eqs		--			Physics (21) REF, Not uploaded
+32	REF: Simple Harmonic Motion	--			Physics (21) REF, Not uploaded
+33	REF: Circuits			--			Physics (21) REF, Not uploaded
 34	SUPERPROG: GT-2551		prgmGT2551		Multivar
 		Includes progs 35-39
 35	Volume of a Parallelepiped	prgmPARALPIP		Multivar (34)
@@ -42,3 +42,4 @@ pg#  	Program				Name			Category
 39	Conservative Fields Test	prgmFCONSERV		Multivar (34)
 40	REF: Moments of Inertia		prgm(Th)MOINERT		Physics (21) REF
 41	Simplifying Radicals		prgmSIMPLRAD		Pre-Calc
+42	Day of the Week			prgmDAYOWEEK		Fun
