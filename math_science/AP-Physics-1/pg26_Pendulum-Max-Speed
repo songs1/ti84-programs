@@ -1,0 +1,12 @@
+Max speed of a pendulum bob using Conservation of Energy
+versionKey-01
+
+prgmPENDULM1
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_ARM_LENGTH:_", L
+:Input "_MAX_ANGL#_(VERTI):_", Th	# = Deg symbol
+:ROOT(2GL(1-cos(Th))) --> V
+:Disp ""
+:Disp "_V.MAX_=", V
+:Disp "_<11_spaces>__(INDEP OF MASS)"
