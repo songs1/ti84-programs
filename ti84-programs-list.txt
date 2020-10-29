@@ -33,7 +33,7 @@ pg#  	Program				Name			Category
 31	REF: Kinematic Eqs		--			Physics (21) REF
 32	REF: Simple Harmonic Motion	--			Physics (21) REF
 33	REF: Circuits			--			Physics (21) REF
-34	SUPERPROG: GT-2551		prgmGT2551			Multivar Calc
+34	SUPERPROG: GT-2551		prgmGT2551		Multivar
 		Includes progs 35-39
 35	Volume of a Parallelepiped	prgmPARALPIP		Multivar (34)
 36	Area of Triangle, Cross Product	prgmAREA2551		Multivar (34)
