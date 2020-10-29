@@ -1,0 +1,25 @@
+prgmDERIVT2
+
+:Disp "_2ND DERIV TEST FOR F(X,Y)"
+:Disp ""
+:Input "_TEST POINT:_", L1
+:Input "_PARTIAL F.X_=_", Str1: Str1 --> Y1
+:Input "_________F.Y_=_", Str2: Str2 --> Y2
+
+:L1(1)-->X: L2(2) --> Y
+:nDeriv(Y1, X, L1(1)) --> A
+:nDeriv(Y1, Y, L1(2)) --> B
+:nDeriv(Y2, Y, L1(2)) --> D
+:AD - B^2 --> H
+
+:If H > 0: Then
+:If A > 0: "_LOCAL MIN" --> Str3
+:If A < 0: "_LOCAL MAX" --> Str3
+:End
+:If H < 0: "_SADDLE POINT" --> Str3
+:If H = 0: "_<INCONCLUSIVE>" --> Str3
+
+:Disp""
+"Disp "_HESSIAN (DET)_=", H
+:Disp L1
+:Disp Str3
