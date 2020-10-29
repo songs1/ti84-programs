@@ -1,0 +1,84 @@
+For rxn: a + b (+ c) --> d + e (+ f)
+"Totma" = Molar Mass * Coefficient
+**Note: For a + b --> d + e type-rxns, 
+	enter "P3_TOTMA" = 0
+
+prgmLIMITRXN
+:Input "REACTANT_COUNT:_" , T
+:If T=2 xor T=3
+:Then
+:Input "R1_AMNT:_" , A
+:Input "R1_TOTMA:_" , D
+:Input "R2_AMNT:_" , B
+:Input "R2_TOTMA:_" , E
+:If T = 3
+:Then
+:Input "R3_AMNT:_" , C
+:Input "R3_TOTMA:_" , F
+:Else
+:1e99 --> C
+:1 --> F
+:End
+:Input "P1_TOTMA:_" , G
+:Input "P2_TOTMA:_" , H
+:Input "P3_TOTMA:_" , Q
+:If A/D <= B/E and A/D <= C/F
+:Then
+:A/D * G --> L
+:A/D * H --> M
+:A/D * Q --> R
+:2 --> J
+:B - (A/D * E) --> O
+:3 --> K
+:C - (A/D * F) --> P
+:Else
+:If B/E <= C/F
+:Then
+:B/E * G --> L
+:B/E * H --> M
+:B/E * Q --> R
+:1 --> J
+:A - (B/E * D) --> O
+:3 --> K
+:C - (B/E * F) --> P
+:Else
+:C/F * G --> L
+:C/F * H --> M
+:C/F * Q --> R
+:1 --> J
+:A - (C/F * D) --> O
+:2 --> K
+:B - (C/F * E) --> P
+:End
+:End
+:ClrHome
+:For (I, 1, 3, 1)
+:Output (I+2, 1, "_PROD_:")
+:Output (I+2, 6, I)
+:End
+:Output (3, 9, L)
+:Output (4, 9, M)
+:Output (5, 9, R)
+:For (N,1,T-1,1)
+:Output (N+5, 1, "_LEFTO:")
+:Output (N+5, 21, "_(R_)")
+:End
+:Output (6, 9, O)
+:Output (6, 24, J)
+:If T = 3
+:Then
+:Output (7, 9, P) 
+:Output (7, 24, K)
+:A +B -O -P -L -M -R --> Z
+:Else
+:A +B -O -L -M -R --> Z
+:End
+:Else
+:ClrHome
+:9999999999 --> Z 
+	//"9"x10
+:Output (3, 1, "_ERROR!")
+:End
+:Z
+
+<Confirmation line Z = 0 for gram-to-gram problems only>
