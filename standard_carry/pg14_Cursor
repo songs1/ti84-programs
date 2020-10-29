@@ -1,0 +1,21 @@
+How to make an interactive cursor on the TI-84
+
+prgmCURSOR
+:ClrHome
+:1 --> X
+:1 --> Y
+:Repeat K=21 //2nd Button
+:getKey --> K
+:Output (Y, X, "_")
+
+:If K=24 and X>1
+:X-1 --> X
+:If K=26 and X<26
+:X+1 --> X
+:If K=25 and Y>1
+:Y-1 --> Y
+:If K=34 and Y<10
+:Y+1 --> Y
+
+:Output(Y, X, "[Choose cursor symbol]")
+:End
