@@ -1,0 +1,26 @@
+prgmRWEXAMP7
+//A = distance between N and F
+//N = Nearest measuring point angle
+//F = Farthest "v.s."
+//H = target Height
+//R = Remaining distance from N to below H
+//D = Length between N and H
+//L = Distance between F and H
+
+:Degree
+:Input "NEAR ANGLE:", N
+:Input "_FAR ANGLE:", F
+:Inupt "NEAR-FAR DIST:", A
+:(A*tan(F))/(1-(tan(F)/tan(N))) --> H
+:H/tan(N) --> R
+:H/sin(N) --> L
+:H/sin(F) --> D
+:Output(7,1,"_HEIGHT:")
+:Output(8,1,"_REMAIN:")
+:Output(9,1,"_N_TO_H:")
+:Output(10,1,"_F_TO_H:")
+:Output(7,10,H)
+:Output(8,10,R)
+:Output(9,10,L)
+:Output(10,10,D)
+:H^2+R^2=L^2 //Insurance =1
