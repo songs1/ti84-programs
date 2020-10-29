@@ -1,0 +1,81 @@
+#pg_4A-02 (versionKey-02)
+Combined Trigonometry Laws Program: "ShareaBao" Version (Inputs)
+
+prgmLAWOTRIG
+:Menu ("SELECT OPERATION",
+	"LAW SIN, FIND ANGLE", 	A
+	"LAW SIN, FIND LENGTH", B
+	"LAW COS, FIND ANGLE", 	C
+	"LAW COS, FIND LENGTH", D
+	"TRIANGLE AREA", 	E
+	"ANGLE BTWN VECTORS",	F
+	"(REF): TRIG ID'S", 	G)
+
+:Lbl G
+:ClrHome
+:Output (2,2, "tan(Th)^2 + 1 = 1/cos(Th)^2")
+:Output (3,2, "sin(A+-B) = SA*CB+-CA*SB")
+:Output (4,2, "cos(A+-B) = CA*CB+-SA*SB")
+:Output (6,2, "sin(Th)^2 = .5(1-cos(2Th))
+:Output (7,2, "cos(Th)^2 = .5(1+cos(2Th))
+:Stop
+
+:Lbl A
+:Disp "FIND ANGLE B"
+:Disp""
+:Input "_LENGTH A:_", D
+:Input "__ANGLE A:_", E
+:Input "_LENGTH B:_", X
+:Disp "__ANGLE B:", arcsin(Xsin(E)/D)
+:Stop
+
+:Lbl B
+:Disp "FIND LENGTH B"
+:Disp""
+:Input "_LENGTH A:_", D
+:Input "__ANGLE A:_", E
+:Input "__ANGLE B:_", X
+:Disp "_LENGTH B:", Dsin(X)/sin(E)
+:Stop
+
+:Lbl C
+:Disp "FIND ANGLE C"
+:Disp""
+:Input "_LENGTH A:_", D
+:Input "_LENGTH B:_", E
+:Input "_LENGTH C:_", X
+:Disp "__ANGLE C:", arccos(( D^2 + E^2 - X^2) / (2DE))
+:Stop
+
+:Lbl D
+:Disp "FIND LENGTH C"
+:Disp""
+:Input "_LENGTH A:_", D
+:Input "_LENGTH B:_", E
+:Input "__ANGLE C:_", X
+:Disp "_LENGTH C:", sqrt(-2DEcos(X) + D^2 + E^2)
+:Stop
+
+:Lbl E
+:Disp "FIND AREA"
+:Disp""
+:Input "_LENGTH A:_", D
+:Input "_LENGTH B:_", E
+:Input "__ANGLE C:_", X
+:Disp "_AREA =", .5DEsin(X)
+:Stop
+
+:Lbl F
+:Disp "FIND ANGLE"
+:Disp""
+:Input "DIMENTIONS:_", D
+:Input "_VECTOR 1:_", L1
+:Input "_VECTOR 2:_", L2
+:0 --> N :0 --> I :0 --> J
+:For (P,1,D,1)
+:N + L1(P)L2(P) --> N
+:I + (L1(P))^2 --> I
+:J + (L2(P))^2 --> J
+:End
+:Disp "_ANGLE:", arccos(N / sqrt(IJ))
+:Stop
