@@ -1,0 +1,29 @@
+Differentials of Y = C * e^(KT); AB Calculus
+versionKey-02
+
+** Essentially, the Rate Constant K = ln(y1-y2)/(t1-t2) **
+
+pgrmDIFYCEKT
+:Input "T1=_", A
+:Input "Y(T1)=_", B
+:Input "T2=_", D
+:Input "Y(T2)=_", E
+:Input "T>0,Y>1_", V
+:(ln(abs(E/B))) / (D/A) --> K
+:B / (e^(KA)) --> C
+
+:If V=0
+:Then
+:Input "T3=_",T
+:Ce^(KT) --> U
+:Else
+:If V=1
+:Then
+:Input "Y(T3)=_",U
+:(ln(U/C)) / K --> T
+:End
+:End
+
+:ClrHome
+:Output(2\3\4\5, 1, "_**=_") // ** C \ K \ T3 \ Y(T3)
+:Output(2\3\4\5, 5, C\K\T\U)
