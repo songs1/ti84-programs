@@ -1,5 +1,5 @@
 pg#  	Program				Name			Category			
-01	Hardy Weinberg Equation		prgmHARDYWEI		Bio
+01	Hardy Weinberg Equilibrium	prgmHARDYWEI		Bio
 02	Two Angle Tangent Problems	prgmRWEXAMP7		Pre-Calc
 03	Airplane Wind Vector		prgmAIRPLANE		Pre-Calc
 04	Combined Trig Laws		prgmLAWOTRIG		Pre-Calc
