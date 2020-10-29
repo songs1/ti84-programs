@@ -1,0 +1,20 @@
+AP Physics 1: Forces unit
+
+Tension of 2 angled strings suspending an item, versionKey-2
+
+prgmTWOCABLE
+:Degree
+:Input "_GRAV_ACCEL:_", G
+:Disp ""
+:Disp "**_MEASURE Th FROM HORIZ_**"
+:Disp ""
+:Input "_Th[A]_=_", D
+:Input "_Th[B]_=_", E
+:Input "_LOAD_MASS:_", M
+
+:(MG) / (sin(D) + cos(D)tan(E)) --> A
+:A*cos(D)/cos(E) --> B
+
+:Disp ""
+:Disp "_TENSION A =", A
+:Disp "_TENSION B =", B
