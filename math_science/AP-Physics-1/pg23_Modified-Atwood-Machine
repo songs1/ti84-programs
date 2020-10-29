@@ -1,0 +1,60 @@
+Modified Atwood Machine Problems (finding Acceleration of the system)
+
+versionKey-01
+
+--Assuming Massless & Frictionless rope
+
+prgmATWOOD
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_MASS_A:_", A
+:Input "_MASS_B:_", B
+:Input "_ANGLE_A:_", D
+:Input "_ANGLE_B:_", E
+
+:If sin(D) =/= 1
+:Then
+:Input "_(A)_MU.S:_", I
+:Input "_(A)_MU.K:_", K
+:Else
+:0 --> I
+:0 --> K
+:End
+
+:If sin(E) =/= 1
+:Then
+:Input "_(B)_MU.S:_", J
+:Input "_(B)_MU.K:_", L
+:Else
+:0 --> J
+:0 --> L
+:End
+
+:AGcos(D) --> N			//Normal for A
+:BGcos(E) --> O			//Normal for B
+:IN + JO --> F			//"Swing votes" for Static Friction
+:BGsin(E) - AGsin(D) --> H	//Difference between driving weights
+:Disp ""
+
+:-1 --> P			//Check if system persuaded "Left"
+:If PH - F > 0
+:Goto C
+
+:1 --> P
+:If PH - F > 0
+:Then
+:Goto C
+
+:Else
+:Disp "_SYSTEM_REMAINS_STATIC"
+:Stop
+:End
+
+:Lbl C
+:(PH-KN-LO) / (A+B) --> C
+
+:If P = -1
+:Disp "_ACC.SYS (TO A):", C	//System accelerates in direction of A
+
+:If P = 1
+:Disp "_ACC.SYS (TO B):", C	//System accelerates in direction of B
