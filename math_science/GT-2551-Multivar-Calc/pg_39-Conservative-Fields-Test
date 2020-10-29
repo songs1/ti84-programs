@@ -1,0 +1,29 @@
+Progs for GT-2551 Multivariable Calc
+
+Component Test for Conservative Fields, versionKey-02
+
+prgmFCONSERV
+:Disp "_**_CONSERVATIVE TEST FOR"
+:Disp "_FIELD F = (M,N,P)_**" :Disp ""
+
+:Input "_M_=_", Str1 :Str1 --> Y1
+:Input "_N_=_", Str2 :Str2 --> Y2
+:Input "_P_=_", Str3 :Str3 --> Y3
+:pi --> X :e --> Y :sqrt(2) --> Z	# Arbitrary evaluation values
+
+:nDeriv( Y3, Y, e) --> A
+:nDeriv( Y2, Z, sqrt(2)) --> B
+:nDeriv( Y3, X, pi) --> D
+:nDeriv( Y1, Z, sqrt(2)) --> E
+:nDeriv( Y2, X, pi) --> I
+:nDeriv( Y1, Y, e) --> J
+
+:If Y3 =/= 0
+:Then :abs(A-B)/A --> C		#Percent error
+:abs(D-E)/D --> F :End
+:abs(I-J)/I --> K
+
+:If (C+F+K) < .0001		#Margin of error for partial deriv evals
+:Then :Disp "_F IS CONSERVATIVE"
+:Else :Disp "_F IS NOT CONSERV."
+:End
