@@ -1,0 +1,83 @@
+Projectile Motion, versionKey-05
+
+Original Eqs
+X(T) = Vcos(A)T
+Y(T) = -0.5GT^2 + Vsin(A)T + H
+
+
+prgmPROJECTL
+:Menu("_PROJECTILE MOTION",
+	"STANDARD, GIVEN LAUNCH", A,
+	"KANGAROO, GIVEN DX,DY", B)
+	
+	/*If given V[f] and Th[f], simply run a standard projectile problem in reverse! (ENTER NEGATIVE S[0]) */
+
+--------------------------------------------------
+//Standard, Given S[0], V[0], Th[0]
+:Lbl A
+:Input "_GRAV ACC.:_-", G
+:Input "_S[0]=_", H
+:Input "_V[0]=_", V
+:Input "_ANGLE (!!!):_", Th
+
+	//Land (Quadratic Eq)
+:Vsin(Th) --> B
+:Root (B^2 + 2GH) --> D
+:(B+D)/G --> T
+:Vcos(Th)T --> X
+
+	//Apex (Time at -b/2a, or V[y] = 0)
+:B/G --> L
+:-0.5GL^2 + Vsin(Th)L + H --> M
+
+	//Landing velocity, speed & angle
+:abs(Vsin(Th) - GT) --> R
+:SQRT((Vsin(Th))^2 + R^2) --> W
+
+:If cos(Th) =/= 0
+:Then
+:arctan(R / (Vcos(Th))) --> Z
+
+	//Fence
+:Input "_FENCE-D:_", P
+:P / (Vcos(Th)) --> U
+:-0.5GU^2 + Vsin(Th)U + H --> Y
+
+:Else
+:V --> W
+:arcsin(1) --> Z
+:-1 --> U
+:-1 --> Y
+:End
+
+	//Display Answers ("Disp" does not fit 10 rows)
+:Clrhome
+:Output (2\3\4\5\7\8\9\10, 1, "_@:_")
+	//@ = LAND-T \ LAND-X \ LAND-V \ LAND-Th \
+	APEX-T \ APEX-Y \ FENCE-T \ FENCE-Y
+:Output (2\3\4\5\7\8\9*\10*, 10\11*, T\X\L\M\U\Y)
+:Output (2\3\4\5\7\8\9\10, 23, "(T\X\L\M\U\Y)")
+:Stop
+
+--------------------------------------------------
+//Kangaroo, Given DX, DY, Th[0]
+
+:Lbl B
+:Input "_GRAV_ACC.:_-",G
+:Input "_X_=_",X
+:Input "_Y_=_",Y
+:Input "_ANGLE (!!!):_", Th
+
+:SQRT((Xtan(Th) -Y) / (.5G)) --> T
+:X/(cos(Th)T) --> V
+:Vcos(Th) --> H
+:Vsin(Th) --> U
+
+:ClrHome
+:Output(2,2,"AIR TIME:")
+:Output(2,12,T)
+:Output(2,23,"(T)")
+:Output(4\6\8, 2, V[0\X\Y]_=")
+:Output(4\6\8, 9, V\H\U)
+:Output(4\6\8, 23, "(V\H\U)")
+:Stop
