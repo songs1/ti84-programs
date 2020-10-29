@@ -1,0 +1,10 @@
+GT Math 2551: Calculating Polar Area using a Double Integral
+versionKey-01
+
+prgmPOLAREA
+:Radian
+:Input "_Th_LO-BOUND:_", A
+:Input "_Th_HI-BOUND:_", B
+:Input "_R_LO-BOUND:_", Str1 :"(" +Str1 +")^2" --> Y1
+:Input "_R_HI-BOUND:_", Str2 :"(" +Str2 +")^2" --> Y2
+:.5*fnInt( Y2 - Y1, Th, A, B)
