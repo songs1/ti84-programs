@@ -1,0 +1,17 @@
+prgmBINOMRAN (prgmBINCDFRA)
+
+A = Lowest # of Success within Range
+B = Highest # of Success within Range
+C = Total # of Trials
+P = Probability of Individual Success
+
+:0 --> Th
+:If B >= A + 1
+:Then
+:B - A --> D
+:For (I, 0, D, 1)
+:I + A --> J
+:( (C nCr J) (P)^J * (1 - P)^(C - J)) + Th --> Th
+:End
+:End
+:Th
