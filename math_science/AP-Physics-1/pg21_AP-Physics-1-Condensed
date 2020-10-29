@@ -1,0 +1,93 @@
+Condensed Backup for superprog_APPHYS1
+
+prgm(Th)(Th)APPHYS
+:Degree
+:Lbl A
+:Menu ("_ _APPHYS1-V8 CONDENSED",
+	
+	"_PENDULUM", E		
+	"_PROJECTILE MOTION", F,
+	"_TENSION OF 2 STRINGS", G,
+	"_UNIFORM CIRC. MOTION", H,
+	"_REF:_ _KINEMATIC EQS", N)
+
+
+:Lbl E
+:Disp "**_PENDULUM_**"
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_ARM_LENGTH:_", L
+:Input "_MAX_ANGL$_(VERTI):_", Th	# {$ = Deg symbol}
+:ROOT(G/L)/(2pi) --> F
+:ROOT(2GL(1-cos(Th))) --> V
+:Disp ""
+:Disp "_FREQUENCY:_", F
+:Disp "_V.MAX_=", V
+:Disp "_<11_spaces>__(INDEP OF MASS)"
+:Disp ""
+:Disp "_MAX_TENSION_=_MG_*", 3-2cos(Th)
+:Stop
+
+
+:Lbl G
+:Disp "**_TENSION 2 STRINGS_**" :Disp ""
+:Input "_GRAVITY:_", G
+:Input "_Th[A]_(FROM HORIZ)_=_", D
+:Input "_Th[B]_=_", E
+:Input "_LOAD MASS:_", M
+:(MG) / (sin(D)+cos(D)tand(E)) --> A
+:Acos(D) / cos(E) --> B :Disp ""
+:Disp "_TENSION A =", A
+:Disp "_TENSION B =", B
+:Stop
+
+
+:Lbl H
+:Disp "**_UNIFORM CIRC MO_**" :Disp ""
+:Input "_GRAVITY:_", G
+:Input "_MASS:_", M
+:Input "_RADIUS:_", R
+:Input "_VELOC:_", V
+:arctan(RG/V^2) --> Th
+:MG/sin(Th) --> T
+:2piR/V --> P
+:R/cos(Th) --> L
+:Disp "_ROPE LENGHT:", L
+:Disp "______TENSION:", T
+:Disp "_ANGLE FROM HORIZ:", Th
+:Disp "_ROTATION PERIOD (TP):", P
+:Stop
+
+
+:Lbl F
+:Disp "**_PROJECTILE_**" :Disp ""
+:Input "_GRAVITY: -", G
+:Input "_Y[0]=_", H
+:Input "_V[0]=_", V
+:Input "_ANGLE$:_", Th				# {$ = deg symbol}
+:Vsin(Th) --> B: ROOT(B^2 + 2GH) --> D
+:(B+D) / G --> T
+:Vcos(Th)T --> X
+:B/G --> L
+:-.5GL^2 + Vsin(Th)L + H --> M
+:abs(Vsin(Th) - GT) --> R
+:ROOT((Vcos(Th))^2 + R^2) --> W
+:90 --> Z
+:If cos(Th) =/= 0
+:arctan(R / (Vcos(Th))) --> Z
+:ClrHome
+:Output (2\3\4\5\7\8, 1 "_$$$$-$:_")
+	#{ $$$$-$ | LAND-T\LAND-X\LAND-V\LAND-Th\APEX-T\APEX-Y }
+:Output (2\3\4\5\7\8, 10, T\X\W\Z\L\M)
+:Output (2\3\4\5\7\8, 23, "($)")		#{ $ = T\X\W\Z\L\M }
+:Stop
+
+
+:Lbl N
+:Disp "**_4 KINEMATIC EQ (REF)_**"
+:Disp ""
+:Disp "_V.F^2 = V.0 + 2A(DX)"
+:Disp "_V.F = AT"
+:Disp "_DX = .5AT^2 + (V.0)T"
+:Disp "_DX = .5T*(V.0 + V.F)
+:Stop
