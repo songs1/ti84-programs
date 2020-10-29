@@ -1,0 +1,54 @@
+Updated Euler's Method Programs
+
+//Neater, Limited History, Manual Advance
+
+prgmEULER2
+:ClrHome
+:Input "DY/DX_=_",Str1
+:Str1 --> functY1
+:Input "X[0]_=_", X
+:Input "Y[0]_=_", Y
+:Input "_STEP:_", H
+:Input "_REPS:_", N
+
+:For (I,1,N,1)
+:Output (10,1,"_{24 blanks}_")\
+
+:Y+HfunctY1 --> Y
+:X+H --> X
+:5+int(log(I)) --> J
+
+:Disp "_x[", X
+:Disp "_Y[", Y
+:Output (6,4,I)
+:Output (6,J,"]_=")
+:Output (8,4,I)
+:Output (8,J,"]_=")
+:Output (10,1,"_ _PRESS_ENTER_TO_ADVANCE")
+
+:Pause
+:End
+
+//Single Calc, Endpoint Only
+
+prgmTYEULER
+:Input "DY/DX_=_", Str1
+:Str1 --> functY1
+:Input "X[0]_=_", X
+:Input "Y[0]_=_", Y
+:Input "_STEP:_", H
+:Input "_REPS:_", N
+
+:For (I,1,N,1)
+:Y+HfunctY1 --> Y
+:X+H --> X
+:5+int(log(I)) --> J
+:End
+
+:Clrhome
+:Disp "_X[", X
+:Disp "_Y[", Y
+:Output (1,4,I-1)
+:Output (1,J,"]_=")
+:Output (3,4,I-1)
+:Output (3,J,"]_=")
