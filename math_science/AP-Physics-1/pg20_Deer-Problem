@@ -1,0 +1,36 @@
+AP Physics 1, Kinematics problem: Obstacle in the road, brake to avoid colliding
+
+versionKey-02
+
+prgmROADKILL
+:Input "_SPEED:_", V
+:Input "_DISTANCE:_", D
+:Input "_REACTION:_", R
+:Input "_BRAKE_POW:_-", B
+
+:V/B --> T
+:VR + .5TV --> L
+:B(-R + SQRT( R^2 + (2D/B))) --> M
+:-V^2 / (2(D-VR)) --> K
+:(D/V) - .5T --> S
+
+:ClrHome
+:Output(2,2,"BRAKE_TIME:")
+:Output(2,15,T)
+:Output(2,23,"_(T)")
+:Output(3,2,"TRAVEL_DIST:")
+:Output(3,15,L)
+:Output(3,23,"_(L)")
+:Output(4,2,"REMAIN DIST:")
+:Output(4,15,D-L)
+
+:Output(6,2,"W/O_COLLISION:")
+:Output(7,2,"MAX SPEED:")
+:Output(7,13,M)
+:Output(7,23,"_(M)")
+:Output(8,2,"MIN DECEL:")
+:Output(8,13,K)
+:Output(8,23,"_(K)")
+:Output(9,2,"SLOW REACT:")
+:Output(9,14,S)
+:Output(9,23,"_(S)")
