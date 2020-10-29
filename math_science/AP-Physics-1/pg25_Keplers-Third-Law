@@ -1,0 +1,13 @@
+Kelper's 3rd Law (Time Period and Average Velocity of Elliptical Orbits)
+
+prgmKEPLER3
+:Input "_MASS OF ORBITERE:_", M
+:Input "_RADIUS (S-MAJOR AX):_", R
+
+:6.67e-11 --> K
+:2piR*ROOT(R/(KM)) --> T
+:2piR / T --> V
+
+:Disp "_ORBIT PERIOD (T):_", T
+:Disp ""
+:Disp "_AVR. VELOCITY (V):_", V
