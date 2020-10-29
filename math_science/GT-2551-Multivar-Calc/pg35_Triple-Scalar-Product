@@ -1,0 +1,9 @@
+GT Multivariable Calc 2551
+Volume of a parallelepiped, a.k.a. Scalar Triple Product
+versionKey-01
+
+prgmPARALPIP
+:Input "_VECTOR U_=_", L1
+:Input "________V_=_", L2
+:Input "________W_=_", L3
+:L3(1)*(L1(2)L2(3) -L1(3)L2(2)) - L3(2)*(L1(1)L2(3) -L1(3)L2(1)) + L3(3)*(L1(1)L2(2) -L1(2)L2(1))
