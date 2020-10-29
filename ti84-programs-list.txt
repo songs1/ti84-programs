@@ -1,0 +1,44 @@
+pg#  	Program				Name			Category			
+01	Hardy Weinberg Equation		prgmHARDYWEI		Bio
+02	Two Angle Tangent Problems	prgmRWEXAMP7		Pre-Calc
+03	Airplane Wind Vector		prgmAIRPLANE		Pre-Calc
+04	Combined Trig Laws		prgmLAWOTRIG		Pre-Calc
+05	Projectile Motion		prgmPROJECTL		Pre-Calc
+06	Binomial CDF Probability	prgmBINOMRAN		Pre-Calc
+07	Stoichiometry Limited Rxn	prgmLIMITRXN		Chem
+08	Diffeq Exponential Growth	prgmDIFYCEKT		Calc
+09	pH of a Weak Acid-Base		prgmPHWEAKAB		Chem
+10	Euler’s Method			prgmTYEULER		Calc	
+11	BC Mortgage Lesson		prgmBCPAYDAY		Calc
+12	Chess Board Draw		prgmCHESETUP		Fun
+13	REF: Electrochem		prgm(Th)ELECHEM		Chem REF
+14	Cursor				prgmCURSOR		Fun
+15	Egyptian Multiplication		prgmEGYMULTP		Fun
+16	REF: 3D Surface Areas		prgm(Th)3DSAREA		Pre-Calc REF
+17	X-Wing Dogfighter		prgmXWING		Fun
+18	Newton-Raphson Algorithm	prgmNEWTRAPH		Calc
+19	Base 10 to 12 Convertor		prgmB12CONVR		Fun
+20	Deer Problem (Kinematics)	prgmROADKILL		Physics
+21	SUPERPROG: AP Physics 1		prgmAPPHYS1		Physics
+		Includes progs 3, 5, 22-33, 40
+22	Tension of 2 Cables		prgmTWOCABLE		Physics (21)
+23	Double Modified Atwood		prgmATWOOD		Physics (21)
+24	Uniform Circular Motion		prgmUNICIRMO		Physics (21)
+25	Kepler’s Third Law		prgmKEPLER3		Physics (21)
+26	Pendulum Max Speed		prgmPENDULM1		Physics (21)
+27	Banked Turn Without Slip	prgmBANKTURN		Physics (21)
+28	Electric Force of 3 Particles	prgmELECPULL		Physics (21)
+29	Complex Circuits		prgmCIRCUIT		Physics (21)
+30	Doppler Effect			prgmDOPPLER		Physics (21)
+31	REF: Kinematic Eqs		--			Physics (21) REF
+32	REF: Simple Harmonic Motion	--			Physics (21) REF
+33	REF: Circuits			--			Physics (21) REF
+34	SUPERPROG: GT-2551		prgmGT2551			Multivar Calc
+		Includes progs 35-39
+35	Volume of a Parallelepiped	prgmPARALPIP		Multivar (34)
+36	Area of Triangle, Cross Product	prgmAREA2551		Multivar (34)
+37	Polar Area via Double Integral	prgmPOLAREA		Multivar (34)
+38	2nd Deriv Test for 2 Params	prgmDERIVT2		Multivar (34)
+39	Conservative Fields Test	prgmFCONSERV		Multivar (34)
+40	REF: Moments of Inertia		prgm(Th)MOINERT		Physics (21) REF
+41	Simplifying Radicals		prgmSIMPLRAD		Pre-Calc
