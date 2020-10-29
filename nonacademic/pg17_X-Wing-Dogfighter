@@ -1,0 +1,134 @@
+X-Wing Dogfighter Game for TI-84
+
+versionKey-03
+
+Remaining Bugs:
+--Current solution to HP bars' 55/5 problem is too flashy
+--Damage windows a bit off; probably because of changind T-value
+
+
+prgmXWING
+:ClrHome
+:Disp "WELCOME TO THE STAR WARS"
+:Disp "X-WING DOGFIGHTER GAME!"
+:Disp "USE THE LEFT AND RIGHT"
+:Disp "ARROWS TO MOVE AND UP TO"
+:Disp "FIRE. YOU WILL BE UNABLE"
+:Disp "TO MOVE IMMEDIATELY AFTER."
+:Disp "_"
+:Disp "PRESS ENTER TO START."
+:Disp "MAY THE FORCE BE WITH YOU!"
+:Pause
+
+:ClrHome
+:0 --> C
+:randInt(1,24) --> T
+:12 --> X
+:60 --> H
+:60 --> E
+:50 --> A
+:0 --> F
+:8 --> U
+:1 --> V
+:Output (1, 2, "ENEMY HP:_ _/60")
+:Output (9, 14, "KILL CNT:")
+:Output (9, 2, "HP:_ _/60")
+:Output (10, 2, "CANNONS")
+
+:While H>0
+:Output (9, 5, H)
+:Output (9, 23, C)
+
+:Output (2, T, "_ _ _")
+:If E>0
+:Then
+:Output(1,11,"_ _")	
+	# {Resets Enemy HP to solve 55/5 problem, but very flashy}
+:Output(1,11,E)
+:If T<=1
+:1 --> V
+:If T>=24
+:-1 --> V
+:T+V --> T
+:Output (2, T, "(Th)")
+:Else
+:Output (4, 8, "GOT 'EM!")
+:Output (5, 3, "PRESS ENTER TO CONTINUE")
+:Pause
+:Output (4, 8, "<blank x8>")
+:Output (5, 3, "<blank x23>")
+:C+1 --> C
+:60 --> E
+:8 --> U
+:randInt(1,24) --> T
+:End
+
+:getKey --> K
+:If F=0
+:Then
+:Output (7,X,"_ _ _")
+:If K=24 and X>=3
+:X-2 --> X
+:If K=26 and X<=22
+:X+2 --> X
+:End
+:Output (7,X,"}I{")
+
+:If A>=100
+:Then
+:Output(10,10,"READY_ _ _")
+:If K=25
+:Then
+:0 --> A
+:8 --> F
+:End
+:Else
+:A+7.5 --> A
+:Output(10,10,"CHARGING")
+:End
+
+:If F=2
+:Then
+:0 --> F
+:Output (2,1,"<blank x26>")
+:If X=T
+:E-15 --> E
+:If abs(X-T)=1
+:E-25 --> E
+:If abs(X-T)=2
+:E-10 --> E
+:End
+:If F>=3
+:Then
+:Output(F,1,"<blank x26>")
+:F-1 --> F
+:Output(F,X,"'_'")
+:End
+
+:If U=7
+:Then
+:8 --> U
+:Output(7,1,"<blank x26>")
+:If T=X
+:H-15 --> H
+:If abs(T-X)=1
+:H-10 --> H
+:If abs(T-X)=2
+:H-5 --> H
+:End
+:If U<=6
+:Then
+:Output (U,1,"<blank x26>")
+:U+1 --> U
+:Output(U,T+1,"*")
+:Else
+:If ranInt(1,100) >=95
+:2 --> U
+:End
+
+:End
+:ClrHome
+:Disp "_GAME OVER!")
+:Disp "_"
+:Disp "_CONFIRMED KILLS:")
+:Output (3,19,C)
