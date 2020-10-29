@@ -1,0 +1,23 @@
+BC Calculus Mortgage Loan Monthly Payments Lesson
+
+prgmBCPAYDAY
+:ClrHome
+:Input "Y-RATE:_", R
+:Input "PRINC.:_", P
+:Input "T-YEAR:_", T
+:R/12 --> I
+
+:PI/ (1- (1/(I+1))^(12T) ) --> M
+:Disp "MONTH-PAY:_", M
+:Disp "TOTAL_INT:_", 12MT-P
+:Input "BIGGR-PAY:_", B
+:logBASE(1-PI/B, 1/(I+1)) / 12 --> Y
+:Disp "NEW_YEARS:_", Y
+:Disp "NEW_TOT-INT:_", 12BY-P
+
+#Test Case
+	R = .045		M = 2280.08
+	P = 450,000		TI1 = 370830.20
+	T = 30
+	B = 3000		Y = 18.405
+				TI2 = 212582.10
