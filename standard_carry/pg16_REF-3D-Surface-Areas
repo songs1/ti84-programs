@@ -1,0 +1,13 @@
+Reference Prog: 3D Surface Areas
+
+prgm(Th)3DSAREA
+:Menu ("3D GEOM SURFACE AREAS",
+	"SPHERE", A
+	"CYLINDER", B
+	"CONE", C")
+
+:Lbl A \ B \ C
+:Disp	<A> "SA = 4piR^2
+	<B> "SA = 2piR^2 + (2piR)H"
+	<C> "SA = piRL + piR^2, L = SLANT LENG"
+:Stop
