@@ -1,0 +1,301 @@
+pg_21.12
+
+Programs for AP Physics 1
+versionKey-12
+
+pgrmAPPHYS1
+:Degree
+:Lbl A
+:Menu ("_ _PROGS: AP PHYSICS 1,_V10",
+	
+	"_ATWOOD MACHINE", B,
+	"_ELEC FORCE OF 3 PTCL", D
+	"_PENDULUM", E		
+	"_PROJECTILE MOTION", F,
+	"_TENSION OF 2 STRINGS", G,
+	"_UNIFORM CIRC. MOTION", H,
+	"(NEXT PAGE)", I)
+
+:Lbl I
+:Menu ("_PHYSICS_PROGS_PAGE_2",
+
+	"(PREV. PAGE)", A,
+	"_AIRPLANE WIND", J,
+	"_BANKED TURN", K,
+	"_COMPLEX CIRCUIT", N,
+	"_DOPPLER EFFECT", L,
+	"_KEPLER 3RD LAW", M,
+	"(NEXT PAGE)", O)
+
+:Lbl O
+:Menu ("_PHYSICS_PROGS_PAGE_3",
+
+	"(PREV. PAGE)", I
+	"_(REF): KINEMATIC EQS", P
+	"_(REF): SIMPLE HARMONIC", Q
+	"_(REF): CIRCUITS", R"
+	"_(REF): MOMENTS INERTIA, S")
+
+
+:Lbl N
+:Disp "**_COMPLEX CIRCUITS_**"
+:ClrList L1 :ClrList L2 :ClrList L3 :ClrList L4
+:Input "_BATTERY_VOLTAGE:_", V :Disp""
+:Disp "_A-PATH RESISTORS"
+:Input "_R.A1_=_", D
+:Input "_R.A2_=_", E
+:Disp ""
+:Disp "_B-PATH RESISTORS"
+:Input "_R.B1_=_", F
+:Input "_R.B2_=_", G
+:Disp ""
+:Disp "_COMMON REISTORS"
+:Input "_R.C1_=_", C
+:Input "_R.C2_=_", H
+:C+H + ((D+E)^-1 + (F+G)^-1)^-1 --> R
+:CV/R --> J :HV/R --> K :V-K-J --> S
+:S/(1+E/D) --> W :S-W --> X
+:S/(1+G/F) --> Y :S-Y --> Z
+:W/D --> A :Y/F --> B
+:{D, E, 0, F, G, 0, C, H, 0, R} --> L1
+:{W, X, 0, Y, Z, 0, J, K, 0, V} --> L2
+:{A, A, 0, B, B, 0, V/R, V/R, 0, V/R} --> L3
+:L2*L3 --> L4
+:If abs(A+B-V/R) < .001 :Disp ""
+:Disp "_GO TO STAT-EDIT"
+:Disp "_L1=R, L2=V, L3=I, L4=P"
+:Stop
+
+
+:Lbl D
+:Disp "**_ELEC FORCE ON PTCL A_**"
+:Disp "_(NEG Q = ATTRACTIVE)" :Disp""
+:Input "__Q.A_=_", A
+:Input "__Q.B_=_", B
+:Input "__Q.C_=_", C
+:Input "_DX.B_=_", D
+:Input "_DX.C_=_", E
+:Input "_COULOMB CONST (9E9):_", K
+:KAB/D^2 --> G :KAC/E^2 --> H :G+H --> F
+:Disp "" :Disp "_F.B_=", G
+:Disp "_F.C_=", H
+:Disp "_F.NET_=", F
+:Stop
+
+
+:Lbl L
+:Disp "**_DOPPLER EFFECT_**" :Disp""
+:Input "_SOURCE FREQ:_", F
+:Input "_V-SOUND:_", V
+:Disp "_<blank x6>_+TOWARDS,_-AWAY"
+:Input "_V-SOURCE:_", S
+:Input "_V-OBSERVER:_", D
+:Disp "" :Disp "_APPARENT FREQ:", F(V+D)/(V-S)
+:Stop
+
+
+:Lbl M
+:Disp "**_KEPLER 3RD LAW_**"
+:Disp ""	
+:Input "_MASS OF ORBITERE:_", M
+:Input "_RADIUS (S-MAJOR AX):_", R
+:6.67e-11 --> K
+:2piR*ROOT(R/(KM)) --> T
+:2piR / T --> V
+:Disp "_ORBIT PERIOD (T):_", T :Disp ""
+:Disp "_AVR. VELOCITY?? (V):_", V
+:Stop
+
+
+:Lbl K
+:Disp "**_BANKED TURN W/O SLIP **"
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_TURN RADIUS:_", R
+:Input "_INCLINE ANGL$:_", Th		# {$ = deg symbol}
+:Input "_MU.S_=_", M
+:Disp ""
+:ROOT (RGtan(Th)) --> B
+:ROOT (RG(sin(Th) + Mcos(Th)) / (cos(Th) - Msin(Th))) --> X
+:sin(Th) - Mcos(Th) --> C
+:If C < 0 :Then
+:Disp "_MIN SPEED: NONE"
+:Else
+:ROOT (C / (cos(Th) + Msin(Th))) --> I
+:Disp "_MIN SPEED:", I :End
+:Disp "_MAX SPEED:", X
+:Disp "_RATED (BALANCING) SPEED:", B
+:Disp "" :Disp "(ALL INDEP OF MASS)"
+:Stop
+
+
+:Lbl E
+:Disp "**_PENDULUM_**"
+:Input "_GRAVITY:_", G
+:Disp ""
+:Input "_ARM_LENGTH:_", L
+:Input "_MAX_ANGL$_(VERTI):_", Th	# {$ = Deg symbol}
+:ROOT(G/L)/(2pi) --> F
+:ROOT(2GL(1-cos(Th))) --> V
+:Disp ""
+:Disp "_FREQUENCY:_", F
+:Disp "_V.MAX_=", V
+:Disp "_<11_spaces>__(INDEP OF MASS)"
+:Disp ""
+:Disp "_MAX_TENSION_=_MG_*", 3-2cos(Th)
+:Stop
+
+
+:Lbl G
+:Disp "**_TENSION 2 STRINGS_**" :Disp ""
+:Input "_GRAVITY:_", G
+:Input "_Th[A]_(FROM HORIZ)_=_", D
+:Input "_Th[B]_=_", E
+:Input "_LOAD MASS:_", M
+:(MG) / (sin(D)+cos(D)tand(E)) --> A
+:Acos(D) / cos(E) --> B :Disp ""
+:Disp "_TENSION A =", A
+:Disp "_TENSION B =", B
+:Stop
+
+
+:Lbl H
+:Disp "**_UNIFORM CIRC MO_**" :Disp ""
+:Input "_GRAVITY:_", G
+:Input "_MASS:_", M
+:Input "_RADIUS:_", R
+:Input "_VELOC:_", V
+:arctan(RG/V^2) --> Th
+:MG/sin(Th) --> T
+:2piR/V --> P
+:R/cos(Th) --> L
+:Disp "_ROPE LENGHT:", L
+:Disp "______TENSION:", T
+:Disp "_ANGLE FROM HORIZ:", Th
+:Disp "_ROTATION PERIOD (TP):", P
+:Stop
+
+
+:Lbl B
+:Disp "**_ATWOOD_**" :Disp ""
+:Input "_GRAVITY:_", G
+:Input "_MASS A:_", A
+:Input "_MASS B:_", B
+:Input "_ANGLE A:_", D
+:Input "_ANGLE B:_", E
+:If sin(D) =/= 1 :Then
+:Input "_(A)_MU.S:_", I
+:Input "_(A)_MU.K:_", K
+:Else :0 --> I :0 --> K :End
+:If sin(E) =/= 1 :Then
+:Input "_(B)_MU.S:_", J
+:Input "_(B)_MU.K:_", L
+:Else :0 --> J :0 --> L :End
+:AGcos(D) --> N
+:BGcos(E) --> O
+:IN+JO --> F
+:BGsin(E) - AGsin(D) --> H 
+:Disp ""
+:-1 --> P :If PH-F >0 :Goto C
+:1 --> P :If PH-F >0 :Goto C
+:Disp "_SYSTEM REMAINS STATIC" :Stop
+:Lbl C
+:(PH-KN-LO) / (A+B) --> C
+:If P = -1
+:Disp "_ACC.SYS (A<):", C
+:If P = 1
+:Disp "_ACC.SYS (>B):", C
+:Stop
+
+
+:Lbl F
+:Disp "**_PROJECTILE_**" :Disp ""
+:Input "_GRAVITY: -", G
+:Input "_Y[0]=_", H
+:Input "_V[0]=_", V
+:Input "_ANGLE$:_", Th				# {$ = deg symbol}
+:Vsin(Th) --> B: ROOT(B^2 + 2GH) --> D
+:(B+D) / G --> T
+:Vcos(Th)T --> X
+:B/G --> L
+:-.5GL^2 + Vsin(Th)L + H --> M
+:abs(Vsin(Th) - GT) --> R
+:ROOT((Vcos(Th))^2 + R^2) --> W
+:90 --> Z
+:If cos(Th) =/= 0
+:arctan(R / (Vcos(Th))) --> Z
+:ClrHome
+:Output (2\3\4\5\7\8, 1 "_$$$$-$:_")
+	#{ $$$$-$ | LAND-T\LAND-X\LAND-V\LAND-Th\APEX-T\APEX-Y }
+:Output (2\3\4\5\7\8, 10, T\X\W\Z\L\M)
+:Output (2\3\4\5\7\8, 23, "($)")		#{ $ = T\X\W\Z\L\M }
+:Stop
+
+
+:Lbl J
+:Disp "**_PLANE BEARING (VECT)_**"
+:Input "_PLANE_SPEED:_", P
+:Input "_______BEARG:_", U
+:90-U --> A
+:Input "_ _WIND SPEED:_", W
+:Input "_ ______BEARG:_", R
+:90-R --> B
+:Pcos(A) + Wcos(B) --> I
+:Psin(A) + Wsin(B) --> J
+:ROOT(I^2 + J^2) --> M
+:90 - arctan(J/I) --> Th
+:If abs(Th + 180 - U) < 180
+:Th + 180 --> Th
+:ClrHome
+:Output(2,2,{J,I})
+:Output(3,1,"_SPEED:_")
+:Output(3,9,M)
+:Output(4,1,"_BEARG:_")
+:Output(4,9,Th)
+:Output(6,1,"_UNIT VECTOR:_")
+:Output(7,2,{I/M,J/M})
+:Stop
+
+
+:Lbl P
+:Disp "**_REF: 4 KINEMATIC EQ_**"
+:Disp ""
+:Disp "_V.F^2 = V.0 + 2A(DX)"
+:Disp "_V.F = AT"
+:Disp "_DX = .5AT^2 + (V.0)T"
+:Disp "_DX = .5T*(V.0 + V.F)
+:Stop
+
+
+:Lbl Q
+:Disp "**_REF: HARMONIC MO._**"
+:Disp "_AMPLITUDE = RADIUS = LENG"
+:Disp "_T.SPRING = 2pi*ROOT(M/K)"
+:Disp "_T.PENDLM = 2pi*ROOT(L/G)"
+:Disp "_T = 1/F = 2piR/V"
+:Disp "_W_(ANG VELOC)_=_2piF"
+:Disp "_X = Asin(WT+'PHI')"
+:Disp "_M1*sin(Th1) = M2*sin(Th2)"
+:Stop
+
+
+:Lbl R
+:Disp "**_REF: SERIES V. PARAL_**" :Disp""
+:Disp "______ _V_ _I_ _R"
+:Disp "_SER:_ _+_ _=_ _+"
+:Disp "_PAR:_ _=_ _+_ _^-1"
+:Disp ""
+:Disp "_P = VI = I^2 *R = V^2 /R
+:Stop
+
+
+:Lbl S
+:Disp "**_REF:_MOMENTS OF INERTIA"
+:Disp "___FOR DIFF 3D SHAPES_**"
+:Disp "SPHERE:___(2/3)MR^2"
+:Disp "BALL:_____(2/5)MR^2"
+:Disp "RING:__________MR^2"
+:Disp "DISK:_____(1/2)MR^2"
+:Disp "ROD-END:__(1/3)ML^2"
+:Disp "ROD-MID:_(1/12)ML^2"
+:Stop
