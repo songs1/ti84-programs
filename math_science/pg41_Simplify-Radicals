@@ -1,0 +1,23 @@
+pg_41.01
+Simplifying Radicals, inspired by Patrick Craig's Program
+
+prgmSIMPLRAD
+:Input "SQRT(", I	#Input / Mutable
+:1 --> R		#Accumulated Extract
+:int(SQRT(I)) --> E	#Number of Extraction Cycles
+
+:For (J, E, 1, -1)	#Run backwards to extract larger first
+:Disp J			#Debug
+:If I/J^2 = int(I/J^2)	#If extractable
+:Then
+:JR --> R
+:I/J^2 --> I
+:End
+:End
+
+:Pause			#Debug
+:ClrHome		#Debug
+:Disp "SIMPLIFIED:"
+:Output (4, 3, R)
+:Output (4, 6, "SQRT(")
+:Output (4, 9, I)
