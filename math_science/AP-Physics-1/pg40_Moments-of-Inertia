@@ -1,0 +1,13 @@
+pg_40.01
+
+Moment of Inertia for 3D shapes
+
+prgmMOINERT
+:Disp "**_REF:_MOMENTS OF INERTIA"
+:Disp "___FOR DIFF 3D SHAPES"
+:Disp "SPHERE:___(2/3)MR^2"
+:Disp "BALL:_____(2/5)MR^2"
+:Disp "RING:__________MR^2"
+:Disp "DISK:_____(1/2)MR^2"
+:Disp "ROD-END:__(1/3)ML^2"
+:Disp "ROD-MID:_(1/12)ML^2"
