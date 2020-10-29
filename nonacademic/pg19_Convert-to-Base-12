@@ -1,0 +1,66 @@
+TI-84 Base 10 to Base 12 Converter (6 figures)
+
+versionKey 1.01 //With guider comments!
+
+
+prgmB12CONVR
+:{0, 0, 0, 0, 0, 0} --> listTEN
+:{0, 0, 0, 0, 0, 0} --> listDOZ
+:6 --> P
+:ClrHome
+:Output (2, 1, "_B10:_")
+:Output (6, 1, "_B12:_")
+
+:While 1
+
+	//Display current digits and "dozets"
+:For (M, 1, 6, 1)
+:Output (3, 4M, listTEN(M))
+:If listDOZ(M) <10
+:Output (7, 4M, listDOZ(M))
+:If listDOZ(M) =10
+:Output (7, 4M, "A")
+:If listDOZ(M) =11
+:Output (7, 4M, "B")
+:End
+
+	//Move cursor horiz
+:getKey --> K
+:Output (4, 4P, "_")
+:If K=24 and P>1
+:P-1 --> P
+:If K=26 and P<6
+:P+1 --> P
+:Output (4, 4P, "^")
+
+	//Incr-Decr digit values
+:If K=25 and listTEN(P) <9
+:Then
+:listTEN(P) +1 --> listTEN(P)
+:1 --> W
+:End
+:If K=34 and listTEN(P) >0
+:Then
+:listTEN(P) -1 --> listTEN(P)
+:1 --> W
+:End
+
+	//Recalculate if digits are changed
+:If W=1
+:Then
+:0 --> W
+:{0,0,0,0,0,0} --> listDOZ
+
+:For (I, 1, 6, 1)
+:W + listTEN(I)*10^(6-I) --> W
+End
+
+:For (J, 1, 6, 1)
+:While W>=12^(6-J)
+:W - 12^(6-J) --> W
+:listDOZ(J) +1 --> listDOZ(J)
+:End
+:End
+:End
+
+:End
