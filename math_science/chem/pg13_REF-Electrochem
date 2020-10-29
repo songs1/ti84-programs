@@ -1,0 +1,36 @@
+Reference Prog: Electrochemistry
+
+prgm(Th)ELECHEM
+:ClrHome
+:Menu ("ELECTROCHEM REFERENCES",
+	"NERNST EQ.", A
+	"METAL GEN.", B
+	"ETROLSIS OF H^2O", C
+
+:Lbl A
+:Disp "NERNST EQ."
+:Disp "E = E[0] - (RT/NF)ln(Q)"
+:Disp ""
+:Disp "R = 8.314 J*mol^-1"
+:Disp "F = 96485 C*mol^-1"
+:Stop
+
+:Lbl B
+:Disp "METAL GENERATION"
+:Disp "USE: Q = I * TIME"
+:Disp ""
+:Disp "Q = TOTAL COULOMBS"
+:Disp "I = CURRENT"
+:Stop
+
+:Lbl C
+:Disp "ELECTROLYSIS OF WATER"
+:Disp "FOR BOTH, USE THE MORE"
+:Disp "SPONTANEOUS (HIGHER E[0])"
+:Disp ""
+:Disp "RED: 2H^2O +2e^-1 > H^2 +2OH^-1"
+:Disp "E[0] = -.8277 V"
+:Disp ""
+:Disp "OX: 2H^2O > O^2 +4H^+ +4e^-1"
+:Disp "FLIPPED E[0] = -1.229 V"
+:Stop
