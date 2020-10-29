@@ -1,0 +1,64 @@
+prgmPHWEAKAB
+
+pH of a Weak Acid/Base Calculation
+
+Advantages over HHE
+	--Does not assume 5% rule (insignificantly more accurate)	
+	--Solvable for [Conj]0 = 0.00 (not limited to Buffers)
+	--More user-friendly (less chance of error)
+
+Disadvantages
+	--Does not need Graphing Calculator
+	--Probably takes longer
+	--Test key will use 5% rule if applicable
+
+:ClrHome
+:Input "ACID>1,_BASE>2:_", J
+:Input "[MAIN]0=_", I
+:Input "[CONJ]0=_", N
+:Input "K-FLIP?_", F
+:Input "K=_", K
+
+:If F = 1
+:Then
+:e-14 / K --> K
+:End
+
+:I/K --> R
+:-(N+K)/2 --> Q
+:SQRT( (N+K)^2 + 4KI )/2 --> D
+:0 --> C
+
+:If Q+D > 0 and Q+D <= I
+:Then
+:Q+D --> C
+:Else
+:If Q-D > 0 and Q-D <= I
+:Then
+:Q-D --> C
+:End
+:End
+
+:If J = 1
+:Then
+:-log(C) --> P
+:If 7 < P
+:Then
+:7 --> P
+:End
+
+:Else
+:If J = 2
+:Then
+:14 + log(C) --> P
+:If 7 > P
+:Then
+:7 --> P
+:End
+:End
+:End
+
+:Output(7,1,"_ _pH:_")
+:Output(7, 7, P)
+:Output(8,1,"_ _400_RULE:_")
+:Output(8,13,R)
