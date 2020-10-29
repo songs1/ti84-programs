@@ -1,0 +1,29 @@
+Calculate Actual-Motion Vector given Airplane Vector and Wind Vector
+
+prgmAIRPLANE
+:Degree
+:ClrHome
+:Input "_PLANE_SPEED=_",P
+:Input "_PLANE_BEARG=_",U
+:90 - U --> A
+:Input "_ _WIND SPEED=_",W
+:Input "_ _WIND BEARG=_",R
+:90 - R --> B
+
+:Pcos(A) + Wcos(B) --> I
+:Psin(A) + Wsin(B) --> J
+:Root(I^2 + J^2) --> M
+
+:90-arctan(J/I) --> Th
+:If abs(Th + 180 - U) < 90
+:Then
+:Th + 180 --> Th
+:End
+
+:Output(6,2,{I,J})
+:Output(7,1,"_SPEED:_")
+:Output(7,9,M)
+:Output(8,1,"_BEARG:_")
+:Output(8,9,Th)
+:Output(9,1,"_UNIT_VECTOR:_")
+:Output(10,2,{I/M, J/M})
