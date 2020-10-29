@@ -1,0 +1,31 @@
+Newton-Raphson Method of Root Approximation (Finding Zeros)
+
+//Wide spacing version
+
+prgmNEWTRAPH
+:ClrHome
+:Input "_0_=_F(X)_=_", Str1
+:Str1 --> functY1
+:Input "_INITIAL_GUESS:_X_=_", X
+:Disp ""
+:Disp "_X[0]_=", X
+
+:0 --> C
+:While 1
+:Output(9,1,"_{26 blanks}_")
+:Output(10,1,"_{26 blanks}_")
+
+:X - (functY1 / nDeriv(functY1,X,X)) --> X
+:C+1 --> C
+:5 + int(log(C)) --> J
+
+:Disp "_X[", X
+:Disp ""		//Necessary for correct "wrapping"* 
+:Disp ""		//*Each successive answer on same row
+:Output(6,4,C)
+:Output(6,J,"]_=")
+
+:Output(9,1,"_PRESS:_ENTER_TO_ADVANCE,")
+:Output(10,9,"ON_BUTTON_TO_QUIT.")
+:Pause
+:End
