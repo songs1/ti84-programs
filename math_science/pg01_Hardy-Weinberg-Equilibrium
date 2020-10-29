@@ -1,0 +1,26 @@
+prgmHARDYWEI
+:If Ans<=1 and Ans>=0
+:Then:
+:Ans-->R
+:R^0.5-->Q
+:1-Q-->P
+:P^2-->D
+:2PQ-->H
+:Output(5,1,"_DOM-AL_FREQ.")
+:Output(5,16,P)
+:Output(6,1,"_REC-AL_FREQ.")
+:Output(6,16,Q)
+:Output(7,1,"_HOMO-D_FREQ.")
+:Output(7,16,D)
+:Output(8,1,"_HETERO_FREQ.")
+:Output(8,16,H)
+:Output(9,1,"_HOMO-R_FREQ.")
+:Output(9,16,R)
+:Else:
+:DelVar R
+:DelVar Q
+:DelVar P
+:DelVar D
+:DelVar H
+:End:
+:D+H+R
