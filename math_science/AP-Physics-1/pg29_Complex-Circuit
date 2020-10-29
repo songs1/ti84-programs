@@ -1,0 +1,45 @@
+AP Physics Complex Circuits (2 paths); versionKey-02
+
+prgmCIRCUIT
+:ClrList L1
+:ClrList L2
+:ClrList L3
+:ClrList L4
+
+:Input "_BATTERY_VOLTAGE:_", V :Disp""
+:Disp "_A-PATH RESISTORS"
+:Input "_R.A1_=_", D
+:Input "_R.A2_=_", E
+:Disp ""
+:Disp "_B-PATH RESISTORS"
+:Input "_R.B1_=_", F
+:Input "_R.B2_=_", G
+:Disp ""
+:Disp "_COMMON REISTORS"
+:Input "_R.C1_=_", C
+:Input "_R.C2_=_", H
+
+:C+H + ((D+E)^-1 + (F+G)^-1)^-1 --> R
+:CV/R --> J
+:HV/R --> K
+
+:V-K-J --> S
+:S/(1+E/D) --> W
+:S-W --> X
+:S/(1+G/F) --> Y
+:S-Y --> Z
+:W/D --> A
+:Y/F --> B
+
+:{D, E, 0, F, G, 0, C, H, 0, R} --> L1		#Resistance Col
+:{W, X, 0, Y, Z, 0, J, K, 0, V} --> L2		#Voltage col
+:{A, A, 0, B, B, 0, V/R, V/R, 0, V/R} --> L3	#Current col
+:L2*L3 --> L4					#Power col
+
+:If abs(A+B-V/R) < .001 :Disp ""
+:Disp "_GO TO STAT-EDIT"
+:Disp "_L1=R, L2=V, L3=I, L4=P"
+
+
+/* Other Checks: Power Sum = Total Power
+*/
